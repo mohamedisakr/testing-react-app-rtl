@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
 function App() {
+  const handleClick = event => {
+    event.preventDefault()
+    event.target.style = "backgroundColor: 'green'"
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Testing React using Jest and React Testing Library</h2>
+      <button onClick={handleClick} style={{backgroundColor: 'red'}}>
+        Change to blue
+      </button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
