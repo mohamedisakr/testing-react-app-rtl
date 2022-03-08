@@ -31,3 +31,18 @@ test('button enabled/disabled when checkbox clicked', () => {
   userEvent.click(checkBox)
   expect(button).toBeEnabled()
 })
+
+test('disabled button has gray background, reverts to red', () => {
+  render(<App />)
+  const button = screen.getByRole('button', {name: /change/i})
+  const checkBox = screen.getByRole('checkbox', {name: /toggle/i})
+
+  userEvent.click(checkBox)
+  expect(button).toBeDisabled()
+  expect(button).toHaveStyle({backgroundColor: 'gray'})
+
+  userEvent.click(checkBox)
+  expect(button).toBeEnabled()
+  expect(button).toHaveStyle({backgroundColor: 'red'})
+  // screen.debug()
+})

@@ -5,6 +5,7 @@ function App() {
   const [buttonColor, setButtonColor] = useState('red')
   const [disabled, setDisabled] = useState(false)
   const newButtonColor = buttonColor === 'red' ? 'blue' : 'red'
+  // disabled === true      ? setButtonColor('gray') :
 
   const handleClick = event => {
     event.preventDefault()
@@ -13,6 +14,7 @@ function App() {
 
   const handleChange = event => {
     setDisabled(event.target.checked)
+    // setButtonColor('gray')
   }
 
   return (
@@ -22,7 +24,7 @@ function App() {
         <button
           disabled={disabled}
           onClick={handleClick}
-          style={{backgroundColor: buttonColor}}
+          style={{backgroundColor: disabled ? 'gray' : buttonColor}}
         >
           Change to {newButtonColor}
         </button>
