@@ -22,7 +22,7 @@ test('button enabled/disabled when checkbox clicked', () => {
   const button = screen.getByRole('button', {name: /change/i})
   expect(button).toBeEnabled()
 
-  const checkBox = screen.getByRole('checkbox')
+  const checkBox = screen.getByRole('checkbox', {name: /toggle/i})
   expect(checkBox).not.toBeChecked()
 
   userEvent.click(checkBox)

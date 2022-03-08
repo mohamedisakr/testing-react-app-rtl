@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
   const [buttonColor, setButtonColor] = useState('red')
-  const [toggle, setToggle] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const newButtonColor = buttonColor === 'red' ? 'blue' : 'red'
 
   const handleClick = event => {
@@ -12,10 +12,7 @@ function App() {
   }
 
   const handleChange = event => {
-    // event.preventDefault()
-    // let isEnabled = toggle
-    setToggle(event.target.checked)
-    // setToggle(val => !val)
+    setDisabled(event.target.checked)
   }
 
   return (
@@ -23,7 +20,7 @@ function App() {
       <h2>Testing React using Jest and React Testing Library</h2>
       <div>
         <button
-          disabled={toggle}
+          disabled={disabled}
           onClick={handleClick}
           style={{backgroundColor: buttonColor}}
         >
@@ -36,8 +33,8 @@ function App() {
           type="checkbox"
           id="toggle"
           name="toggle"
-          defaultChecked={toggle}
-          aria-checked={toggle}
+          defaultChecked={disabled}
+          aria-checked={disabled}
         ></input>
         <label htmlFor="toggle">Toggle</label>
       </div>
