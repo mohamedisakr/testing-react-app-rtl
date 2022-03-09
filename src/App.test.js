@@ -6,7 +6,7 @@ import App from './App'
 test('button has initail color', () => {
   render(<App />)
   const button = screen.getByRole('button', {name: /change/i})
-  screen.debug()
+  // screen.debug()
   expect(button).toHaveStyle({backgroundColor: 'MediumVioletRed'})
 })
 
@@ -14,6 +14,7 @@ test('button color turns to blue when clicked', () => {
   render(<App />)
   const button = screen.getByRole('button', {name: /change/i})
   expect(button).toHaveStyle({backgroundColor: 'MediumVioletRed'})
+
   userEvent.click(button)
   expect(button).toHaveStyle({backgroundColor: 'MidnightBlue'})
   expect(button).toHaveTextContent(/red/i)
@@ -40,6 +41,7 @@ test('disabled button has gray background, reverts to red', () => {
   const checkBox = screen.getByRole('checkbox', {name: /toggle/i})
 
   userEvent.click(checkBox)
+
   expect(button).toBeDisabled()
   expect(button).toHaveStyle({backgroundColor: 'gray'})
 

@@ -3,12 +3,12 @@ import './App.css'
 import {camelToCapitalWithSpaces} from './utils/string'
 
 function App() {
+  // MediumVioletRed --> MidnightBlue
   const [buttonColor, setButtonColor] = useState('MediumVioletRed')
   const [disabled, setDisabled] = useState(false)
-  // const newButtonColor = buttonColor === 'red' ? 'blue' : 'red'
+
   const newButtonColor =
     buttonColor === 'MediumVioletRed' ? 'MidnightBlue' : 'MediumVioletRed'
-  // MediumVioletRed --> MidnightBlue
 
   const handleClick = event => {
     event.preventDefault()
@@ -28,8 +28,6 @@ function App() {
           onClick={handleClick}
           style={{
             backgroundColor: disabled ? 'gray' : buttonColor,
-            // : camelToCapitalWithSpaces(buttonColor),
-            // : camelToCapitalWithSpaces(newButtonColor),
           }}
         >
           Change to {camelToCapitalWithSpaces(newButtonColor)}
