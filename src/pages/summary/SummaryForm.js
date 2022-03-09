@@ -1,14 +1,27 @@
 import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+// import CustomTooltip from '../../common/CustomTooltip'
+
+const renderTooltip = props => (
+  <Tooltip id="button-tooltip" {...props}>
+    No ice cream will actually be delivered
+  </Tooltip>
+)
 
 const SummaryForm = () => {
   const [termsChecked, setTermsChecked] = useState(false)
 
+  const handleButtonClick = event => {
+    event.preventDefault()
+  }
+
   const checkboxLable = (
-    <span>
-      I agree to{' '}
-      <span style={{ color: 'blueviolet' }}>Terms and Conditions</span>
-    </span>
+    <OverlayTrigger placement="right" overlay={renderTooltip}>
+      <span>
+        I agree to{' '}
+        <span style={{ color: 'blueviolet' }}>Terms and Conditions</span>
+      </span>
+    </OverlayTrigger>
   )
 
   return (
@@ -21,7 +34,12 @@ const SummaryForm = () => {
           label={checkboxLable}
         ></Form.Check>
       </Form.Group>
-      <Button variant="primary" type="submit" disabled={!termsChecked}>
+      <Button
+        onClick={handleButtonClick}
+        variant="primary"
+        type="submit"
+        disabled={!termsChecked}
+      >
         Confirm Order
       </Button>
     </Form>
