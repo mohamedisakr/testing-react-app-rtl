@@ -2,18 +2,20 @@ import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
 
+// MediumVioletRed --> MidnightBlue
 test('button has initail color', () => {
   render(<App />)
   const button = screen.getByRole('button', {name: /change/i})
-  expect(button).toHaveStyle({backgroundColor: 'red'})
+  screen.debug()
+  expect(button).toHaveStyle({backgroundColor: 'MediumVioletRed'})
 })
 
 test('button color turns to blue when clicked', () => {
   render(<App />)
   const button = screen.getByRole('button', {name: /change/i})
-  expect(button).toHaveStyle({backgroundColor: 'red'})
+  expect(button).toHaveStyle({backgroundColor: 'MediumVioletRed'})
   userEvent.click(button)
-  expect(button).toHaveStyle({backgroundColor: 'blue'})
+  expect(button).toHaveStyle({backgroundColor: 'MidnightBlue'})
   expect(button).toHaveTextContent(/red/i)
 })
 
@@ -43,6 +45,6 @@ test('disabled button has gray background, reverts to red', () => {
 
   userEvent.click(checkBox)
   expect(button).toBeEnabled()
-  expect(button).toHaveStyle({backgroundColor: 'red'})
+  expect(button).toHaveStyle({backgroundColor: 'MediumVioletRed'})
   // screen.debug()
 })

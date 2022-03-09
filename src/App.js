@@ -1,11 +1,14 @@
 import {useState} from 'react'
 import './App.css'
+import {camelToCapitalWithSpaces} from './utils/string'
 
 function App() {
-  const [buttonColor, setButtonColor] = useState('red')
+  const [buttonColor, setButtonColor] = useState('MediumVioletRed')
   const [disabled, setDisabled] = useState(false)
-  const newButtonColor = buttonColor === 'red' ? 'blue' : 'red'
-  // disabled === true      ? setButtonColor('gray') :
+  // const newButtonColor = buttonColor === 'red' ? 'blue' : 'red'
+  const newButtonColor =
+    buttonColor === 'MediumVioletRed' ? 'MidnightBlue' : 'MediumVioletRed'
+  // MediumVioletRed --> MidnightBlue
 
   const handleClick = event => {
     event.preventDefault()
@@ -14,7 +17,6 @@ function App() {
 
   const handleChange = event => {
     setDisabled(event.target.checked)
-    // setButtonColor('gray')
   }
 
   return (
@@ -24,9 +26,13 @@ function App() {
         <button
           disabled={disabled}
           onClick={handleClick}
-          style={{backgroundColor: disabled ? 'gray' : buttonColor}}
+          style={{
+            backgroundColor: disabled ? 'gray' : buttonColor,
+            // : camelToCapitalWithSpaces(buttonColor),
+            // : camelToCapitalWithSpaces(newButtonColor),
+          }}
         >
-          Change to {newButtonColor}
+          Change to {camelToCapitalWithSpaces(newButtonColor)}
         </button>
       </div>
       <div>
