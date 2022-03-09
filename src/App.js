@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import './App.css'
-import {camelToCapitalWithSpaces} from './utils/string'
+import { camelToCapitalWithSpaces } from './utils/string'
 
 function App() {
   // MediumVioletRed --> MidnightBlue
