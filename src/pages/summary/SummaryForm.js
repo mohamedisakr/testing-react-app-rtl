@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Form, Button, OverlayTrigger, Tooltip, Popover } from 'react-bootstrap'
 // import CustomTooltip from '../../common/CustomTooltip'
 
-const renderTooltip = props => (
-  <Tooltip id="button-tooltip" {...props}>
-    No ice cream will actually be delivered
-  </Tooltip>
-)
+// const renderTooltip = props => (
+//   <Tooltip id="button-tooltip" {...props}>
+//     No ice cream will actually be delivered
+//   </Tooltip>
+// )
 
 const SummaryForm = () => {
   const [termsChecked, setTermsChecked] = useState(false)
@@ -15,8 +15,14 @@ const SummaryForm = () => {
     event.preventDefault()
   }
 
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Body>No ice cream will actually be delivered</Popover.Body>
+    </Popover>
+  )
+
   const checkboxLable = (
-    <OverlayTrigger placement="right" overlay={renderTooltip}>
+    <OverlayTrigger placement="right" overlay={popover}>
       <span>
         I agree to{' '}
         <span style={{ color: 'blueviolet' }}>Terms and Conditions</span>
