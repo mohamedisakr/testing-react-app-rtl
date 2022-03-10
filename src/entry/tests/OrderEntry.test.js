@@ -2,12 +2,13 @@ import { rest } from 'msw'
 import {
   render,
   screen,
+  waitFor,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import OrderEntry from '../OrderEntry'
 import { server } from '../../mocks/server'
 
-describe.only('handle server errors for scoops & toppings', () => {
+describe('handle server errors for scoops & toppings', () => {
   test('display image for each scoop option', async () => {
     server.resetHandlers(
       rest.get('http://localhost:3030/scoops', (req, res, ctx) => {
@@ -20,10 +21,10 @@ describe.only('handle server errors for scoops & toppings', () => {
 
     render(<OrderEntry />)
 
-    // get all images
-    const errorAlerts = await screen.findAllByRole('alert', {
-      name: /something went wrong/i,
-    }) //
-    expect(errorAlerts).toHaveLength(2)
+    // get all alerts (2 in this case)
+    await waitFor(async () => {
+      const errorAlerts = await screen.findAllByRole('alert') // , {        name: /something went wrong/i,   }
+      expect(errorAlerts).toHaveLength(2)
+    })
   })
 })
