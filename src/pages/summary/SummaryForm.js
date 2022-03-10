@@ -1,12 +1,5 @@
 import { useState } from 'react'
-import { Form, Button, OverlayTrigger, Tooltip, Popover } from 'react-bootstrap'
-// import CustomTooltip from '../../common/CustomTooltip'
-
-// const renderTooltip = props => (
-//   <Tooltip id="button-tooltip" {...props}>
-//     No ice cream will actually be delivered
-//   </Tooltip>
-// )
+import { Form, Button, OverlayTrigger, Popover } from 'react-bootstrap'
 
 const SummaryForm = () => {
   const [termsChecked, setTermsChecked] = useState(false)

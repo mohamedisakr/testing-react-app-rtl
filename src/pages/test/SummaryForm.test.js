@@ -69,6 +69,8 @@ describe.only('Summary form', () => {
     userEvent.unhover(termsAndCondition)
     const disappearedPopup = screen.queryByText(/ice cream/i)
     await waitForElementToBeRemoved(() => screen.queryByText(/ice cream/i))
+
+    // you can remove this line
     expect(disappearedPopup).not.toBeInTheDocument()
   })
 })
