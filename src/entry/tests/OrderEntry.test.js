@@ -21,7 +21,9 @@ describe.only('handle server errors for scoops & toppings', () => {
     render(<OrderEntry />)
 
     // get all images
-    const errorAlerts = await screen.findAllByRole('alert', { name: /error/i }) //
+    const errorAlerts = await screen.findAllByRole('alert', {
+      name: /something went wrong/i,
+    }) //
     expect(errorAlerts).toHaveLength(2)
   })
 })

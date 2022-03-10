@@ -1,19 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Alert, Row } from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
+import AlertBanner from '../common/AlertBanner'
 import ScoopOptions from './ScoopOptions'
 import ToppingOption from './ToppingOption'
 
 const Options = ({ optionType }) => {
   const [scoops, setScoops] = useState([])
-  const [show, setShow] = useState(true)
-
-  const ServerErrorAlert = () => (
-    <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-      <Alert.Heading>Server Error</Alert.Heading>
-      <p>Something went wrong. Please try again later</p>
-    </Alert>
-  )
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
     getScoops()
@@ -25,7 +19,7 @@ const Options = ({ optionType }) => {
       setScoops(res.data)
     } catch (err) {
       console.log(err)
-      ServerErrorAlert()
+      setHasError(true)
     }
   }
 
@@ -35,7 +29,7 @@ const Options = ({ optionType }) => {
     <ItemComponent key={name} name={name} imagePath={imagePath} />
   ))
 
-  return <Row>{OptionItem}</Row>
+  return <Row>{hasError ? <AlertBanner /> : OptionItem}</Row>
 }
 
 export default Options
