@@ -1,8 +1,9 @@
 import './App.css'
-import SummaryForm from './pages/summary/SummaryForm'
+import ScoopOptions from './entry/ScoopOptions'
+// import SummaryForm from './pages/summary/SummaryForm'
 
 const App = () => {
-  return <SummaryForm />
+  return <ScoopOptions />
 }
 
 export default App
