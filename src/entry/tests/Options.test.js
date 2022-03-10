@@ -14,4 +14,12 @@ describe('scoops', () => {
     const images = await screen.findAllByRole('img', { name: /scoop$/i })
     expect(images).toHaveLength(4)
   })
+
+  test('display image for each topping option', async () => {
+    render(<Options optionType="toppings" />)
+
+    // get all images
+    const images = await screen.findAllByRole('img', { name: /topping$/i })
+    expect(images).toHaveLength(6)
+  })
 })
