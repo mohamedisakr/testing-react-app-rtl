@@ -19,7 +19,7 @@ const Options = ({ optionType }) => {
     }
   }
 
-  const ItemComponent = optionType === 'scoops' ? <ScoopOptions /> : null
+  const ItemComponent = optionType === 'scoops' ? ScoopOptions : null
 
   const OptionItem = scoops.map(({ name, imagePath }) => (
     <ItemComponent key={name} name={name} imagePath={imagePath} />
